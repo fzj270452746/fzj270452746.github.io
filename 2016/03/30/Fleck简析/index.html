@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>《Fleck》App简析 | 蜗牛</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="《Fleck》App简析 | 蜗牛">
+    <meta name="twitter:description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="《Fleck》App简析 | 蜗牛">
+    <meta property="og:description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    
+    <meta name="author" content="Jacqui Fan">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/03/30/Fleck简析/"/>
+
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 蜗牛 的主页"><img src="/images/logo2.jpg" width="80" alt="蜗牛 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 蜗牛">蜗牛</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">所谓的信仰不是成为多么牛逼的人 而是成为你想成为的人！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/atom.xml">rss</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-03-30T14:12:52.000Z" class="post-list__meta--date date">2016-03-30</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/App分析/">App分析</a>, <a class="tag-link" href="/tags/Fleck/">Fleck</a>, <a class="tag-link" href="/tags/人人都是产品经理/">人人都是产品经理</a>, <a class="tag-link" href="/tags/图片社交/">图片社交</a>, <a class="tag-link" href="/tags/移动产品/">移动产品</a>
+</span>
+    </div>
+    <h1 class="post-title">《Fleck》App简析</h1>
+  </header>
+
+  <section class="post">
+    <p><strong>废话</strong></p>
+<p>又到了每次的废话时间，先聊聊写这篇App简析的目的吧。接触产品有一段时间了，虽然看了很多产品经理说初学产品的新人多去做产品分析，竞品分析什么的，本人一直想去尝试分析一款产品以增加对产品的认识，可实际做产品分析门槛比较高，感觉无从下手，所以就一直没有做这件事。最近在<a href="www.woshipm.com">人人都是产品经理</a>社区上看到有位<a>胡军成</a>产品大神发表的一篇文章<a href="http://www.woshipm.com/pmd/307909.html" target="_blank" rel="external">《刚开始学习产品，如何用简单方法来分析产品？附案例》</a>，感觉此种方法对于产品的分析确实门槛比较低，易于操作。同时，本公司产品也即将进入2.0版本功能收集讨论中，因此正好找些类似App进行分析，以便更好的为本公司产品寻找灵感。下面，将对一款类<a>Instagram</a>图片分享类应用<a>Fleck</a>进行简析。第一次做产品分析，若有不当之处，还望各位不吝赐教。</p>
+<p><strong>目录</strong></p>
+<pre><code>1. 这个产品是干什么的？
+2. 这个产品是给谁用的？
+3. 解决了什么样的需求和痛点？
+4. 用什么方式来解决？
+5. 有哪些地方做的比较好？哪些做的不太好？
+6. 如果换做你来做，你会怎么做？
+</code></pre><h1 id="1-这个产品是干什么？"><a href="#1-这个产品是干什么？" class="headerlink" title="1.这个产品是干什么？"></a>1.这个产品是干什么？</h1><p><a>Fleck</a>同备受国外用户青睐的<a>Instagram</a>有着类似的功能，都是主打图片分享的应用，用户可以在应用内欣赏绚烂多彩的艺术大作。<a>Instagram</a>注重社交，而<a>Fleck</a>却弱化社交，主打图片分享，这就是其与<a>Instagram</a>最大的不同之处。</p>
+<h1 id="2-这个产品是给谁用的？"><a href="#2-这个产品是给谁用的？" class="headerlink" title="2.这个产品是给谁用的？"></a>2.这个产品是给谁用的？</h1><p>百度了半天，发现很少有关此App的相关信息，因此对于用户群的划分只能通过其他类似App分析，于是在往上找到了<a>Instagram</a>的相关数据，根据其数据，53%的Instagram用户年龄在18到29岁之间，90%的用户年龄小于35岁，其中男女比例为49：51，由上可大致推测<a>Fleck</a>的用户群与之相似。</p>
+<p><strong>用户画像</strong>可能是这样：李童鞋、26岁，互联网公司一名UI设计狮，爱好旅游摄影，经常利用节假日去到各个地方进行旅行，因此，看到美妙的事物后，便会利用手机或相机拍照记录下来。但是，光拍下来自己欣赏多没意思，于是就是找个地方分享自己的作品，同时能够得到别人的认可，收获满足感，这也是他坚持拍照的动力。</p>
+<h1 id="3-解决了什么样的需求和痛点？"><a href="#3-解决了什么样的需求和痛点？" class="headerlink" title="3.解决了什么样的需求和痛点？"></a>3.解决了什么样的需求和痛点？</h1><p>需求：有个地方能根据图片的分类进行分享。<br>痛点：存储了大量的美图，确没有地方与他人共同分享，得不到别人的认可，坚持拍照的动力逐渐减弱，长期导致失去对生活的热爱，从而影响了生活品质（2333）。</p>
+<h1 id="4-用什么方式来解决？"><a href="#4-用什么方式来解决？" class="headerlink" title="4.用什么方式来解决？"></a>4.用什么方式来解决？</h1><ul>
+<li><p>4.1 产品结构图</p>
+<p>  <img src="/images/Fleck/Fleck产品结构图.png" alt="这是一张图"></p>
+</li>
+<li><p>4.2 说明</p>
+<p>  注册登录后，首先进入首页，该页面以列表形式展示所有用户发布上去的图片，此处的图片根据每种分类用户点赞数的多少进行排序展现出来的，用户无需点击每张图片，就可以清晰直观的欣赏到别人的作品。由于在用户上传图片时，没有对图片进行编辑美化的操作功能，因此每张图都尽可能的还原了其真实的状态，使得每张图片都纯粹干净。首页左上角，有个分类标签和按钮，当向下滑动时，滑动到每张图片时，左上角的分类标签会跟着图片上传时选择的图片分类进行显示。</p>
+<p>  左上角默认分类为全部，点击后，进入选择分类列表，可根据个人喜好进行选择。首页右上角分为热门和最新两个模块，默认为热门，热门显示是根据多少用户喜欢某张图片进行展示的，因此具有代表性。</p>
+<p>  <img src="/images/Fleck/sort.jpg" alt="这是一张图"><br>  <img src="/images/Fleck/hot.jpg" alt="这是一张图">    </p>
+<p>  点击最新或者左滑进入最新页面，此处以多层图片叠加的形式进行展示，每次只能看到最上层图片。通过拖拽图片向上（表示喜欢），或者向下（表示不喜欢）移除图片，则展示下一张图片。</p>
+<p>  <img src="/images/Fleck/new.jpg" alt="这是一张图"></p>
+</li>
+</ul>
+<h1 id="5-有哪些地方做的比较好？哪些做的不太好？"><a href="#5-有哪些地方做的比较好？哪些做的不太好？" class="headerlink" title="5. 有哪些地方做的比较好？哪些做的不太好？"></a>5. 有哪些地方做的比较好？哪些做的不太好？</h1><ul>
+<li>好的地方：<ol>
+<li>功能比较纯粹，最大限度的还原了图片的最原始状态。同时在上传图片时，当图片分辨率低于最小值时，会提示用户图片分辨率过低，因此对于上传的图片就保证了其质量，提升了App的体验质量。</li>
+<li>首页热门图片的选择根据其他用户对图片点赞数的多少进行筛选展示，此种做法的好处是，当用户进入App时，就能欣赏到高质量的图片，让人流连忘返。</li>
+<li>首页图片每隔一段时间进行更换，保证了图片的新鲜度，不会让用户感觉乏味。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>不好的地方：<ol>
+<li>没有图片搜索功能，比如我想搜索关于某一类型与花相关的图片，不能快速查找到目标。</li>
+</ol>
+</li>
+</ul>
+<h1 id="6-如果换做你来做，你会怎么做？"><a href="#6-如果换做你来做，你会怎么做？" class="headerlink" title="6.如果换做你来做，你会怎么做？"></a>6.如果换做你来做，你会怎么做？</h1><p>该App整体功能，相对比较简单，赏图、传图、点赞，玩法单一，不能吸引更多的用户，同时，用户在该App上花费的时间不会很多，因为用户只能点赞，看到再美的图片也无法表达，只能用一小小的赞以抒发情感，可能会给用户用着不爽的感觉。尼玛，我都已积蓄数以万计的赞美之词，想要喷涌而出的时候，卧槽，你却只有一颗心让我点（还特么是白色的），内心一万匹草泥马在狂奔，狂奔之后，一片枯黄的落叶潇潇洒洒的从眼前飘过，便仰天长啸，怒吼一声，“我要卸载！！！”。（开个玩笑！）回归正题。</p>
+<p>我的想法是在保持图片的纯粹性的基础上，增加更多互动的环节，提升用户活跃度。</p>
+<ol>
+<li>根据提到不好的地方，增加图片的细分种类，增加搜索功能，通过查找关键词搜索出相关图片。</li>
+<li>增加图片评论模块，提高用户的活跃度，让用户对于美的图片就应该表达出来，对于发布者来说，看到别人的赞扬时，内心也是非常高兴的，因此会大大提高其上传图片的积极性。</li>
+<li>为图片添加故事。在上传图片时，可以为图片加些说明，可以说明这张图片背后的故事。下雨天，图和文字更配呦！</li>
+<li>增加对上传图片作者的关注功能，这样当被关注者有作品更新时，提醒关注着去查看。</li>
+<li>增加话题模块，用户可在该模块分享自己的作品的艺术来源，以及拍照技巧等。</li>
+<li>增加点赞排行.功能，可以根据具体分类以及总大类进行排行。</li>
+<li><p>在第6点的基础上，增加图片PK模式</p>
+<p> 说明：当前用户可以选择照片与排行榜中的任意图片进行PK</p>
+<p> 评判方式：再发起pk模式的一定时间内，让其他用户对需要评判的两张图进行点赞，2选1，在活动结束内，根据点赞数的多少进行，对结果进行处理。</p>
+<p> 结果处理：如PK发起方点赞数小于等于另一方，则另一方的排名不进行改变，否则的话，无论发起方原排行为多少或无排名，则直接排在被PK方前一名。被PK方排名减1.</p>
+</li>
+</ol>
+<p><strong>结尾</strong><br>终于要结束了，第一次写这个真是绞尽脑汁啊，一个月的脑细胞都死在这上面了。以上纯属个人观点，如有异议，可一起讨论，欢迎各路大神赐教。我先看下能否在博客中加入评论功能吧，如若没有的话，想和我一起讨论的话加我Q:<a color:red="">1692448416</a>。</p>
+
+  </section>
+
+</article>
+
+
+<section class="post-comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="http://yoursite.com/2016/03/30/Fleck简析/" data-title="《Fleck》App简析" data-url="http://yoursite.com/2016/03/30/Fleck简析/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"ibelief"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Longbo Ma</a> 创建,
+        使用<a href="https://github.com/lenbo-ma/hexo-theme-vno">hexo-theme-vno</a>主题,
+        修改自<a href="http://github.com/onevcat/vno" target="_blank">Vno</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-42596364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>

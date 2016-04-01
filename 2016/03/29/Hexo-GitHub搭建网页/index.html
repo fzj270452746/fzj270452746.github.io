@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Hexo + GitHub搭建网页 | 蜗牛</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Hexo + GitHub搭建网页 | 蜗牛">
+    <meta name="twitter:description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hexo + GitHub搭建网页 | 蜗牛">
+    <meta property="og:description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    
+    <meta name="author" content="Jacqui Fan">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/03/29/Hexo-GitHub搭建网页/"/>
+
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 蜗牛 的主页"><img src="/images/logo2.jpg" width="80" alt="蜗牛 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 蜗牛">蜗牛</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">所谓的信仰不是成为多么牛逼的人 而是成为你想成为的人！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/atom.xml">rss</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-03-29T08:42:32.000Z" class="post-list__meta--date date">2016-03-29</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/GitHub/">GitHub</a>, <a class="tag-link" href="/tags/Hexo/">Hexo</a>
+</span>
+    </div>
+    <h1 class="post-title">Hexo + GitHub搭建网页</h1>
+  </header>
+
+  <section class="post">
+    <p><strong>废话</strong></p>
+<p>本人菜鸟一枚，看到很多大神手动去搭建博客，感觉比较有意思，于是自己就决定也搭个，提升自己的逼格。于是找来了很多教程，根据教程一步一步操作，可中间还是遇到了很多问（shen）题（keng），过程可谓一波三折，折腾了两个星期，重装过无数次，终见成效。后续有时间会更新一些文章，无论是学习、生活，还是娱乐上的都会涉及，望各位看官轻喷，再次表示感谢！废话不多说，进入正题。此篇主要参考：<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">http://blog.fens.me/hexo-blog-github/</a>.</p>
+<p><strong>目录</strong></p>
+<pre><code>1. Hexo介绍
+2. Hexo安装
+3. Hexo的使用
+4. 发布项目到github
+5. 设置域名
+6. 主题切换
+7. 问题汇总
+</code></pre><h3 id="1-Hexo介绍"><a href="#1-Hexo介绍" class="headerlink" title="1. Hexo介绍"></a>1. Hexo介绍</h3><p>自行百度，不会百度的看下图</p>
+<p><img src="/images/Hexo+GitHub/baidu.jpg" alt="这是一张图"></p>
+<p>另附上Hexo官网：<a href="http://hexo.io/" target="_blank" rel="external">http://hexo.io/</a>，有兴趣的童鞋可以去学习下。</p>
+<h3 id="2-Hexo安装"><a href="#2-Hexo安装" class="headerlink" title="2. Hexo安装"></a>2. Hexo安装</h3><p>配置环境：</p>
+<p>   node v4.4.0 下载地址<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a> 默认安装即可</p>
+<p>   安装Git，安装Xcode自带有Git，如果没有的话，下载地址<a href="https://git-scm.com/download/mac" target="_blank" rel="external">https://git-scm.com/download/mac</a>安装，具体配置的话百度。</p>
+<p>   申请GitHub</p>
+<p>   <a href="https://github.com" target="_blank" rel="external">GitHub</a>账号，没有的话直接申请。</p>
+<ul>
+<li><p>Hexo安装要用全局安装，mac系统默认安装在当前用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装完成后，查看当前hexo版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装好后，就可以使用hexo创建项目了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init Hexo</span><br></pre></td></tr></table></figure>
+<p>Hexo为文件夹，创建好后，会在当前目录下生成一个名为Hexo的文件夹，且里面包含初始化的文件。</p>
+</li>
+<li><p>启动Hexo服务器,进入刚创建好的文件夹下，命令行输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  hexo server</span><br><span class="line">  </span><br><span class="line">  INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+<p>上面表示服务器已启动，打开浏览器，输入上述地址，即可看到本地博客已经创建完成。如下图：</p>
+<p><img src="/images/Hexo+GitHub/localhost.png" alt="这是一张图"></p>
+</li>
+</ul>
+<h3 id="3-Hexo的使用"><a href="#3-Hexo的使用" class="headerlink" title="3.Hexo的使用"></a>3.Hexo的使用</h3><ul>
+<li><p>创建新文章，在Hexo目录下，命令行输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 第一篇博客</span><br></pre></td></tr></table></figure>
+<p>创建完成后，会在source/_posts/路径下看到刚才创建的名为<strong>第一篇博客.md</strong>的文件，用编辑器打开看下</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 第一篇博客</span><br><span class="line">date: 2016-03-29 10:14:53</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>  默认会显示如上内容，后续我们将要在该文件里进行编辑，编辑工具可    以使用<a href="http://macdown.uranusjr.com" target="_blank" rel="external">MacDown</a>，具体使用    方法自行研究，话说我也是第一次使用，很多需要学习的地方。我们先    来对创建好的文章进行简单的编辑下吧。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 第一篇博客</span><br><span class="line">date: 2016-03-29 10:14:53</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line">	我用hexo创建了第一篇博客，感觉好有意思耶。小伙伴们也来吧，我们	一起讨论。</span><br></pre></td></tr></table></figure>
+<p>然后保存，在命令行启动服务器，启动成功后，在浏览器打开<a href="http://localhost:4000/，就出现了我们新写的文章。" target="_blank" rel="external">http://localhost:4000/，就出现了我们新写的文章。</a></p>
+<p><img src="/images/Hexo+GitHub/newPage.png" alt="这是一张图"></p>
+<p>至此，文章就基本完成了。后续可以使用MacDown进行更多格式的编辑。</p>
+</li>
+</ul>
+<h3 id="4-发布项目到github"><a href="#4-发布项目到github" class="headerlink" title="4.发布项目到github"></a>4.发布项目到github</h3><ul>
+<li><p>静态化处理</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<p>  处理完成后，会在本地目录下生成名为<a name="fenced-code-block">public</a>的文件夹，里面包括所有静态化页面。</p>
+</li>
+<li><p>配置GitHub</p>
+<p>建立与你用户名对应的仓库，仓库名必须为<a>[你的用户名.github.io]</a>，比如我的用户名为fzj270452746，则我创建的仓库名为<a>[fzj270452746.github.io]</a>，然后修改配置文件<a>_config.yml</a>，用编辑器打开，翻到最下面，默认为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> # Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br></pre></td></tr></table></figure>
+<p>将上面代码改成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> # Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line"> type: git</span><br><span class="line"> repo: https://github.com/fzj270452746/fzj270452746.github.io.git</span><br></pre></td></tr></table></figure>
+<p>type:为github或者git，通过使用命令hexo version查询当前hexo的版本，若3.0以上则type为git，否则用github。</p>
+<p>repo:后为建立连接的仓库的地址，即刚才创建仓库的地址。</p>
+<p>本人用的地址为默认的https传输，若使用SSH协议，则需要在本地生成ssh_keys，具体生成和导入到github，参考该篇<a href="http://www.jianshu.com/p/31cbbbc5f9fa/" target="_blank" rel="external">如何生成SSH key</a>。当如上工作都完成后，在repo:后添加SSH地址。</p>
+</li>
+<li><p>部署到github上</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>部署完成后，在github上名为<a>fzj270452746.github.io</a>的仓库中既要能看到刚才上传的文件。</p>
+<p><img src="/images/Hexo+GitHub/github" alt="这是一张图"></p>
+<p> 然后就能通过<a>用户名.github.io</a>访问我的博客了。例如我的用户名为<a href="https://fzj270452746.github.io" target="_blank" rel="external">https://fzj270452746.github.io</a>。</p>
+<h3 id="5-域名部署"><a href="#5-域名部署" class="headerlink" title="5.域名部署"></a>5.域名部署</h3><p>上面任务完成后，但是地址总感觉怪怪的，不够逼格，想要设置个颇具个性的域名怎么办咧。那就花钱买买买个域名呗。</p>
+<p>域名分为两种配置方式：</p>
+<ol>
+<li>主域名绑定</li>
+<li>子域名绑定</li>
+</ol>
+<ul>
+<li><p>主域名绑定</p>
+<p>具体可参考该篇<a href="http://www.jianshu.com/p/1d427e888dda" target="_blank" rel="external">【Hexo+Github】域名和github绑定的问题</a></p>
+</li>
+<li><p>子域名绑定</p>
+<p>具体可参考<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">http://blog.fens.me/hexo-blog-github/</a></p>
+<p>域名绑定完成后，切记重新打开本地<a>_config.yml</a>，找到</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as 	&apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://yoursite.com</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<p> 在url: 处填写你的域名，比如我的域名为：ibelief.me，则改为</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as 	&apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://ibelief.me</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<p> 然后重新使用命令</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<p> 重新部署下，然后通过域名<a href="http://ibelief.me" target="_blank" rel="external">http://ibelief.me</a>可直接打开我的博客。到这里，博客已基本完工，剩下的就是一些主题、插件的配置。</p>
+</li>
+</ul>
+<h3 id="6-主题切换"><a href="#6-主题切换" class="headerlink" title="6.主题切换"></a>6.主题切换</h3><ul>
+<li><p>找到一个主题或者自己开发个<br>主题地址：<a href="https://github.com/tommy351/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/tommy351/hexo/wiki/Themes</a></p>
+</li>
+<li><p>放到<a>themes</a>目录下</p>
+<p>  通过git命令下载主题或者手动下载，然后把主题放在<a>themes</a>目录下，如</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/A-limon/pacman.git themes/pacman</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>在<a>_config.yml</a>配置主题</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: vno</span><br></pre></td></tr></table></figure>
+<p>  找到上述配置，然后在theme: 改为下载的主题名字，保存，重新部署，再次打开博客主题已更新。</p>
+</li>
+</ul>
+<h3 id="7-问题汇总"><a href="#7-问题汇总" class="headerlink" title="7.问题汇总"></a>7.问题汇总</h3><ol>
+<li><p>ERROR Plugin load failed: hexo-server</p>
+<p>原因：Besides, utilities are separated into a standalone module. hexo.util is not reachable anymore.</p>
+<p> 解决方法，执行命令：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行命令hexo server，有如下提示：</p>
+<p>   Usage: hexo</p>
+<p>   ….<br>解决方法，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  npm install hexo-server --save</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>ERROR Deployer not found: github 或者 ERROR Deployer not found: github</p>
+<p> 首先查看当前hexo的版本，文中已提到，若不是这个原因，就执行命令</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>总结</strong><br>感谢各位大神的文章，才得以完成自己网页的搭建，中间也遇到很到问题，不断在挫败中寻找解决方式，文中有错误的地方还请各位看官批评指教，由于本人目前能力有限，对于评论模块还未有涉及，如有问题，请加我QQ：<a>1692448416</a>，注明意图，希望能和各位一起探讨，谢谢！</p>
+<p><em>参考文章：</em></p>
+<p><a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">http://blog.fens.me/hexo-blog-github/</a><br><a href="http://www.jianshu.com/p/1d427e888dda" target="_blank" rel="external">http://www.jianshu.com/p/1d427e888dda</a><br><a href="http://www.jianshu.com/p/31cbbbc5f9fa/" target="_blank" rel="external">http://www.jianshu.com/p/31cbbbc5f9fa/</a></p>
+
+  </section>
+
+</article>
+
+
+<section class="post-comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="http://yoursite.com/2016/03/29/Hexo-GitHub搭建网页/" data-title="Hexo + GitHub搭建网页" data-url="http://yoursite.com/2016/03/29/Hexo-GitHub搭建网页/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"ibelief"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Longbo Ma</a> 创建,
+        使用<a href="https://github.com/lenbo-ma/hexo-theme-vno">hexo-theme-vno</a>主题,
+        修改自<a href="http://github.com/onevcat/vno" target="_blank">Vno</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-42596364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>UICollectionView实现瀑布流 | 蜗牛</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="UICollectionView实现瀑布流 | 蜗牛">
+    <meta name="twitter:description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="UICollectionView实现瀑布流 | 蜗牛">
+    <meta property="og:description" content="中文名：范张军，可以叫我：饭饭，英文名：Jacqui，逗逼一枚，爱好啥的就先省略吧，等我有了爱好的时候再来更新。目前从事iOS开发，准备转产品，有兴趣的小伙们可以一起交流。">
+
+    
+    <meta name="author" content="Jacqui Fan">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/04/01/UICollectionView实现瀑布流/"/>
+
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 蜗牛 的主页"><img src="/images/logo2.jpg" width="80" alt="蜗牛 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 蜗牛">蜗牛</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">所谓的信仰不是成为多么牛逼的人 而是成为你想成为的人！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/atom.xml">rss</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-04-01T05:38:32.000Z" class="post-list__meta--date date">2016-04-01</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/UICollectionView/">UICollectionView</a>, <a class="tag-link" href="/tags/UICollectionViewFlowLayout/">UICollectionViewFlowLayout</a>, <a class="tag-link" href="/tags/WaterFlowLayout/">WaterFlowLayout</a>, <a class="tag-link" href="/tags/瀑布流/">瀑布流</a>
+</span>
+    </div>
+    <h1 class="post-title">UICollectionView实现瀑布流</h1>
+  </header>
+
+  <section class="post">
+    <p><strong>废话</strong></p>
+<p>又到了每篇的废话时间，虽然是废话时间，但是不知说啥废话，好纠结。不扯了，赶紧把这篇写完，今天有福利呦！在评论区回复，加我微信，每人都有红包收哦！还不赶紧评论吧！微信号：<a>Jugg1900</a>，微信二维码：</p>
+<p><img src="/images/瀑布流/weixin.jpg" alt="这是一张图"></p>
+<p><strong>Action</strong></p>
+<p>OK！进入正题。首先，感谢来自&lt;简书&gt;的作者<a href="http://www.jianshu.com/users/9029357b2874/latest_articles" target="_blank" rel="external">Tuberose</a> 分享的<a href="http://www.jianshu.com/p/ade9c81ad8e7" target="_blank" rel="external">《瀑布流小框架》</a>。此篇思路和数据是基于其基础上写的，本人稍加修改，或者以我个人的思路去对其进行了模仿。</p>
+<p>首先说下瀑布流的特点是如瀑布一样，每条线上的每个Item高度不一，所以正题滑动起来的话如流水一般。可能对于瀑布流的实现方式有很多，比如在一个Controller里添加多个TableView，然后在每个TableView中设置相应的cell。再者就是通过在UIScrollView中计算每个item的位置。总得来说，比较麻烦，而且处理起来相对复杂，效率也比较低，因此选择UICollectionView实现瀑布流的效果。先上一张最终实现的界面。</p>
+<p><img src="/images/瀑布流/1.jpg" alt="这是一张图"></p>
+<p><strong>实现思路</strong></p>
+<ol>
+<li><p>创建名为<a>WaterFlowLayout</a>文件，其继承自<a>UICollectionViewFlowLayout</a>，然后在.m文件中主要实现以下几个方法</p>
+<ul>
+<li><a>-(void)prepareLayout{}</a> 一般初始化的方法可以在该方法中去操作</li>
+<li><a>-(UICollectionViewLayoutAttributes <em>)layoutAttributesForItemAtIndexPath:(NSIndexPath </em>)indexPath{}</a> 返回indexPath位置上的item布局属性</li>
+<li><a>-(NSArray<uicollectionviewlayoutattributes *=""> *)layoutAttributesForElementsInRect:(CGRect)rect{}</uicollectionviewlayoutattributes></a> 返回已布局好item的数组</li>
+<li><a>-(CGSize)collectionViewContentSize{}</a> 返回实际collectionView的ContentSize</li>
+</ul>
+</li>
+<li><p>思路详解，请看下图。</p>
+<p> <img src="/images/瀑布流/2.png" alt="这是一张图"></p>
+</li>
+<li><p>直接上代码</p>
+</li>
+</ol>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WaterFlowLayout.m</span></span><br><span class="line"><span class="comment">//  WaterFlow</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Jacqui on 16/3/22.</span></span><br><span class="line"><span class="comment">//  Copyright © 2016年 Jugg. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WaterFlowLayout.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//默认列数</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">NSInteger</span>  FFDefaultColumnCount = <span class="number">2</span>;</span><br><span class="line"><span class="comment">//默认行距</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">CGFloat</span>    FFDefaultRowMargin = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//默认列距</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">CGFloat</span>    FFDefaultColumnMargin = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//默认边缘距离</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">UIEdgeInsets</span> FFDefaultEdgeInsets = &#123;<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WaterFlowLayout</span> ()</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *attributesArray;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *columnHeight;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGFloat</span> itemWidth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGFloat</span> contentSizeHeight;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)rowMargin;</span><br><span class="line">- (<span class="built_in">CGFloat</span>)columnMargin;</span><br><span class="line">- (<span class="built_in">NSInteger</span>)columnCount;</span><br><span class="line">- (<span class="built_in">UIEdgeInsets</span>)edgeInsets;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WaterFlowLayout</span></span></span><br><span class="line"><span class="meta">#pragma mark - getter</span></span><br><span class="line">- (<span class="built_in">CGFloat</span>)rowMargin</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.waterFlowDelegate respondsToSelector:<span class="keyword">@selector</span>(rowMarginInWaterflowLayout:)]) &#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="keyword">self</span>.waterFlowDelegate rowMarginInWaterflowLayout:<span class="keyword">self</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FFDefaultRowMargin;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)columnMargin</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.waterFlowDelegate respondsToSelector:<span class="keyword">@selector</span>(columnMarginInWaterflowLayout:)]) &#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="keyword">self</span>.waterFlowDelegate columnMarginInWaterflowLayout:<span class="keyword">self</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FFDefaultColumnMargin;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSInteger</span>)columnCount</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.waterFlowDelegate respondsToSelector:<span class="keyword">@selector</span>(columnCountInWaterflowLayout:)]) &#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="keyword">self</span>.waterFlowDelegate columnCountInWaterflowLayout:<span class="keyword">self</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FFDefaultColumnCount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIEdgeInsets</span>)edgeInsets</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.waterFlowDelegate respondsToSelector:<span class="keyword">@selector</span>(edgeInsetsInWaterflowLayout:)]) &#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="keyword">self</span>.waterFlowDelegate edgeInsetsInWaterflowLayout:<span class="keyword">self</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FFDefaultEdgeInsets;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSMutableArray</span> *)attributesArray</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_attributesArray) &#123;</span><br><span class="line">        _attributesArray = [<span class="built_in">NSMutableArray</span> array];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _attributesArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSMutableArray</span> *)columnHeight</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_columnHeight) &#123;</span><br><span class="line">        _columnHeight = [<span class="built_in">NSMutableArray</span> array];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _columnHeight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - setup</span></span><br><span class="line">- (<span class="keyword">void</span>)prepareLayout</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> prepareLayout];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.scrollDirection = <span class="built_in">UICollectionViewScrollDirectionVertical</span>;</span><br><span class="line">    <span class="comment">//设置列距</span></span><br><span class="line">    <span class="keyword">self</span>.minimumInteritemSpacing = <span class="keyword">self</span>.columnMargin;</span><br><span class="line">    <span class="comment">//设置行距</span></span><br><span class="line">    <span class="keyword">self</span>.minimumLineSpacing = <span class="keyword">self</span>.rowMargin;</span><br><span class="line">    <span class="keyword">self</span>.sectionInset = <span class="keyword">self</span>.edgeInsets;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.columnCount == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.itemWidth = (<span class="keyword">self</span>.collectionView.frame.size.width-<span class="keyword">self</span>.sectionInset.left - <span class="keyword">self</span>.sectionInset.right)/<span class="keyword">self</span>.columnCount;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.itemWidth = (<span class="keyword">self</span>.collectionView.frame.size.width-<span class="keyword">self</span>.sectionInset.left - <span class="keyword">self</span>.sectionInset.right - (<span class="keyword">self</span>.columnCount<span class="number">-1</span>)*<span class="keyword">self</span>.minimumInteritemSpacing )/<span class="keyword">self</span>.columnCount;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">///此处将数组清空为了防止collectionView reloadData时，重新执行该方法，之前数组有历史数据</span></span><br><span class="line">    [<span class="keyword">self</span>.columnHeight removeAllObjects];</span><br><span class="line">    [<span class="keyword">self</span>.attributesArray removeAllObjects];</span><br><span class="line">    <span class="comment">//此处重置高度的目的，是防止当加载更多数据后，重新刷新页面数据时，contentSizeHeight扔为加载更多情况下的高度</span></span><br><span class="line">    <span class="keyword">self</span>.contentSizeHeight = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//根据列数为数组添加对应的元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSInteger</span> i=<span class="number">0</span>; i&lt;<span class="keyword">self</span>.columnCount; i++) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.columnHeight addObject:@(<span class="keyword">self</span>.sectionInset.top)];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSInteger</span> count = [<span class="keyword">self</span>.collectionView numberOfItemsInSection:<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSInteger</span> i=<span class="number">0</span>; i&lt;count; i++) &#123;</span><br><span class="line">        <span class="built_in">UICollectionViewLayoutAttributes</span> *att = [<span class="keyword">self</span> layoutAttributesForItemAtIndexPath:[<span class="built_in">NSIndexPath</span> indexPathForItem:i inSection:<span class="number">0</span>]];</span><br><span class="line">        </span><br><span class="line">        [<span class="keyword">self</span>.attributesArray addObject:att];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *设置UICollectionViewLayoutAttributes的属性，frame</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="built_in">UICollectionViewLayoutAttributes</span> *)layoutAttributesForItemAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UICollectionViewLayoutAttributes</span> *atts = [<span class="keyword">super</span> layoutAttributesForItemAtIndexPath:indexPath];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**First step:</span><br><span class="line">     * 获取item的高度，通过代理方法根据实际返回的数据来确定当前item的高度</span><br><span class="line">     */</span></span><br><span class="line">    <span class="built_in">CGFloat</span> itemHeight = [<span class="keyword">self</span>.waterFlowDelegate waterflowLayout:<span class="keyword">self</span> heightForItemAtIndex:indexPath.item itemWidth:<span class="keyword">self</span>.itemWidth];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**Second step</span><br><span class="line">     * 获取item的对应坐标点</span><br><span class="line">     */</span></span><br><span class="line">    <span class="built_in">NSInteger</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//设置最小列高</span></span><br><span class="line">    <span class="built_in">CGFloat</span> minColumnHeight = [<span class="keyword">self</span>.columnHeight[index] floatValue];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.columnHeight.count == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (minColumnHeight != <span class="keyword">self</span>.sectionInset.top) &#123;</span><br><span class="line">            minColumnHeight += <span class="keyword">self</span>.minimumLineSpacing;</span><br><span class="line">        &#125;</span><br><span class="line">        atts.frame = <span class="built_in">CGRectMake</span>(<span class="keyword">self</span>.sectionInset.left, minColumnHeight, <span class="keyword">self</span>.itemWidth, itemHeight);</span><br><span class="line">        <span class="keyword">self</span>.columnHeight[<span class="number">0</span>] = @(<span class="built_in">CGRectGetMaxY</span>(atts.frame));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.contentSizeHeight = [<span class="keyword">self</span>.columnHeight[<span class="number">0</span>] floatValue];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">NSInteger</span> i=<span class="number">0</span>; i&lt;<span class="keyword">self</span>.columnCount; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ([<span class="keyword">self</span>.columnHeight[i] floatValue] &lt; minColumnHeight) &#123;</span><br><span class="line">                index = i;</span><br><span class="line">                minColumnHeight = [<span class="keyword">self</span>.columnHeight[i] floatValue];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="built_in">CGFloat</span> x = <span class="keyword">self</span>.sectionInset.left + index * (<span class="keyword">self</span>.minimumInteritemSpacing + <span class="keyword">self</span>.itemWidth);</span><br><span class="line">        <span class="built_in">CGFloat</span> y = minColumnHeight;</span><br><span class="line">        <span class="keyword">if</span> (y != <span class="keyword">self</span>.sectionInset.top) &#123;</span><br><span class="line">            y += <span class="keyword">self</span>.minimumLineSpacing;</span><br><span class="line">        &#125;</span><br><span class="line">        atts.frame = <span class="built_in">CGRectMake</span>(x, y, <span class="keyword">self</span>.itemWidth, itemHeight);</span><br><span class="line">        <span class="keyword">self</span>.columnHeight[index] = @(<span class="built_in">CGRectGetMaxY</span>(atts.frame));</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">CGFloat</span> curColumnHeight = [<span class="keyword">self</span>.columnHeight[index] floatValue];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.contentSizeHeight &lt; curColumnHeight) &#123;</span><br><span class="line">            <span class="keyword">self</span>.contentSizeHeight = curColumnHeight;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> atts;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionViewContentSize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">CGSizeMake</span>(<span class="keyword">self</span>.collectionView.frame.size.width, <span class="keyword">self</span>.contentSizeHeight + <span class="keyword">self</span>.sectionInset.bottom);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)shouldInvalidateLayoutForBoundsChange:(<span class="built_in">CGRect</span>)newBounds</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSArray</span>&lt;<span class="built_in">UICollectionViewLayoutAttributes</span> *&gt; *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.attributesArray;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>看到这里，可能有些小伙伴就慌了，他喵的</p>
+<ul>
+<li>-(CGFloat)rowMargin;</li>
+</ul>
+<ul>
+<li>(CGFloat)columnMargin;</li>
+<li>(NSInteger)columnCount;</li>
+<li>(UIEdgeInsets)edgeInsets;</li>
+</ul>
+<p>这几个实现的是什么个玩意。不要急，请让我慢慢道来。这四个对应的分别是行距、列距、列数和边距。默认情况下会使用自定义的值，当自己实现行距、列距、列数和边距的代理方法时，就会根据代理方法返回的值重新设置。再来看下.h文件中的代码。</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WaterFlowLayout.h</span></span><br><span class="line"><span class="comment">//  WaterFlow</span></span><br><span class="line"><span class="comment">//  自定义流布局</span></span><br><span class="line"><span class="comment">//  Created by Jacqui on 16/3/22.</span></span><br><span class="line"><span class="comment">//  Copyright © 2016年 Jugg. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">WaterFlowLayout</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">WaterFlowLayoutDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 传递对应的位置，和宽度，返回item的高度</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">@required</span></span><br><span class="line">- (<span class="built_in">CGFloat</span>)waterflowLayout:(WaterFlowLayout *)waterflowLayout heightForItemAtIndex:(<span class="built_in">NSInteger</span>)index itemWidth:(<span class="built_in">CGFloat</span>)itemWidth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@optional</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  获取列数</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="built_in">CGFloat</span>)columnCountInWaterflowLayout:(WaterFlowLayout *)waterflowLayout;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  获取列距</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="built_in">CGFloat</span>)columnMarginInWaterflowLayout:(WaterFlowLayout *)waterflowLayout;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  获取行距</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="built_in">CGFloat</span>)rowMarginInWaterflowLayout:(WaterFlowLayout *)waterflowLayout;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  获取边距</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="built_in">UIEdgeInsets</span>)edgeInsetsInWaterflowLayout:(WaterFlowLayout *)waterflowLayout;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WaterFlowLayout</span> : <span class="title">UICollectionViewFlowLayout</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">id</span> &lt;WaterFlowLayoutDelegate&gt; waterFlowDelegate;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>可以看到在.h文件中定义了名为WaterFlowLayoutDelegate的代理，其包括1个必须实现的代理方法和4个可选代理方法。设置代理的目的是为了将逻辑与数据分离出来，可用性比较高，想要实现不同样式的瀑布流直接修改代理方法中的值即可。<br>必须实现的代理方法所实现的功能是通过传递item的宽度和当前item对应的NSIndexPath，返回对应item的实际高度。这个实际item的高度就需各位自己去实现。实际操作中，各位需根据具体返回数据来进行设定，比如返回的图片的高度不同，这样就需要根据图片具体的情况进行设置。</p>
+<p>OK！到这里自定义瀑布流基本完成。下面就是如何在Controller里使用刚写好的瀑布流。我们创建了一个名为ViewController的控制器，然后在.m中主要的操作如下</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setupCollectionView</span><br><span class="line">&#123;</span><br><span class="line">    WaterFlowLayout *waterFlow = [[WaterFlowLayout alloc] init];</span><br><span class="line">    waterFlow.waterFlowDelegate = <span class="keyword">self</span>;</span><br><span class="line">    <span class="keyword">self</span>.collectionview = [[<span class="built_in">UICollectionView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, [<span class="built_in">UIScreen</span> mainScreen].bounds.size.width, [<span class="built_in">UIScreen</span> mainScreen].bounds.size.height) collectionViewLayout:waterFlow];</span><br><span class="line">    <span class="keyword">self</span>.collectionview.dataSource = <span class="keyword">self</span>;</span><br><span class="line">    <span class="keyword">self</span>.collectionview.delegate = <span class="keyword">self</span>;</span><br><span class="line">    <span class="keyword">self</span>.collectionview.backgroundColor = [<span class="built_in">UIColor</span> grayColor];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:<span class="keyword">self</span>.collectionview];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.collectionview registerNib:[CollectionViewCell nib] forCellWithReuseIdentifier:<span class="string">@"Cell"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是实现WaterFlowLayoutDelegate的代理方法</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark - WaterFlowLayoutDelegate</span></span><br><span class="line">- (<span class="built_in">CGFloat</span>)waterflowLayout:(WaterFlowLayout *)waterflowLayout heightForItemAtIndex:(<span class="built_in">NSInteger</span>)index itemWidth:(<span class="built_in">CGFloat</span>)itemWidth</span><br><span class="line">&#123;</span><br><span class="line">     ShopModel *shopModel = <span class="keyword">self</span>.datasource[index];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> itemWidth * [shopModel.h floatValue]/[shopModel.w floatValue];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)columnCountInWaterflowLayout:(WaterFlowLayout *)waterflowLayout</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)columnMarginInWaterflowLayout:(WaterFlowLayout *)waterflowLayout</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)rowMarginInWaterflowLayout:(WaterFlowLayout *)waterflowLayout</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIEdgeInsets</span>)edgeInsetsInWaterflowLayout:(WaterFlowLayout *)waterflowLayout</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好了，主要代码都已完成，此时还可以在代码中加入上拉刷新和下拉加载更多，这样就使我们的Demo看起来更专业。<br>代码下载地址：<a href="https://github.com/fzj270452746/jugg.git" target="_blank" rel="external">https://github.com/fzj270452746/jugg.git</a>。</p>
+<p><strong>结束</strong><br>今天就到这里，不要忘了加我微信，有福利呦！</p>
+
+  </section>
+
+</article>
+
+
+<section class="post-comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="http://yoursite.com/2016/04/01/UICollectionView实现瀑布流/" data-title="UICollectionView实现瀑布流" data-url="http://yoursite.com/2016/04/01/UICollectionView实现瀑布流/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"ibelief"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Longbo Ma</a> 创建,
+        使用<a href="https://github.com/lenbo-ma/hexo-theme-vno">hexo-theme-vno</a>主题,
+        修改自<a href="http://github.com/onevcat/vno" target="_blank">Vno</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-42596364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>
