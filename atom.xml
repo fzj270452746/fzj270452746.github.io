@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-01T09:22:54.000Z</updated>
+  <updated>2016-04-11T10:43:02.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>艺术狗简析</title>
+    <link href="http://yoursite.com/2016/04/04/%E8%89%BA%E6%9C%AF%E7%8B%97%E7%AE%80%E6%9E%90/"/>
+    <id>http://yoursite.com/2016/04/04/艺术狗简析/</id>
+    <published>2016-04-04T13:16:46.000Z</published>
+    <updated>2016-04-11T10:43:02.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;strong&gt;废话&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;清明小长假已经结束，出去玩了两天，累的要命，腿都快走废了。节假日出去玩真心累啊，到哪都是人。出去看的不是景，看的是人。好了，不说了。下面来聊下第二个产品《艺术狗》App的简析。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;目录&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 这个产品是干什么的？
+2. 这个产品是给谁用的？
+3. 解决了什么样的需求和痛点？
+4. 用什么方式来解决？
+5. 有哪些地方做的比较好？哪些做的不太好？
+6. 如果换做你来做，你会怎么做？
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;1-这个产品是干什么的？&quot;&gt;&lt;a href=&quot;#1-这个产品是干什么的？&quot; class=&quot;headerlink&quot; title=&quot;1. 这个产品是干什么的？&quot;&gt;&lt;/a&gt;1. 这个产品是干什么的？&lt;/h1&gt;&lt;p&gt;&lt;a&gt;艺术狗&lt;/a&gt;是国内首款移动互联网在线看展APP产品，汇聚全球优质的艺术展览，将线下展出作品如数在互联网移动端展示，让用户足部出户，看遍艺术展览。&lt;/p&gt;
+&lt;p&gt;用户可在线看到艺术达人的点评，与艺术达人在线交流，并对每一幅作品发表自己的见解和看法。&lt;/p&gt;
+&lt;h1 id=&quot;2-这个产品是给谁用的？&quot;&gt;&lt;a href=&quot;#2-这个产品是给谁用的？&quot; class=&quot;headerlink&quot; title=&quot;2. 这个产品是给谁用的？&quot;&gt;&lt;/a&gt;2. 这个产品是给谁用的？&lt;/h1&gt;&lt;p&gt;&lt;a&gt;艺术狗&lt;/a&gt;是一款在线看展神器，因此其主要面向对象是广大艺术爱好者，包括艺术策展人、艺术家、艺评家和艺术爱好者。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用户画像&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;张先生，35岁，金融公司高管，对艺术情有独钟，喜欢欣赏各种作品，也经常去收集一些比较喜欢的作品。但只要有时间就会去参观一些艺展，而且每次和朋友闲聊时都说些跟作品有关的话题。但是，张先生平日工作比较忙，因此对于很多地方的展览不能一饱眼福，这让张先生很是难受，因此，就希望能有个在线观看展览的地方，这样可以利用休息的时间去在线欣赏作品，同时能够对作品进行点评分享。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;3-解决了什么样的需求和痛点？&quot;&gt;&lt;a href=&quot;#3-解决了什么样的需求和痛点？&quot; class=&quot;headerlink&quot; title=&quot;3.解决了什么样的需求和痛点？&quot;&gt;&lt;/a&gt;3.解决了什么样的需求和痛点？&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;需求：&lt;/strong&gt;让每一个热爱艺术的人都能随时随地欣赏到国内最新的艺术展览和作品。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;痛点：&lt;/strong&gt;对于许多热爱艺术的人，由于受限于每天繁忙的工作和地区的限制，不能及时去到展览馆欣赏最新的作品，因此就需要有种途径能给热爱艺术的人，随时随地欣赏到想看的作品，并且能够表达自己的看法和评价。&lt;/p&gt;
+&lt;h1 id=&quot;4-用什么方式来解决？&quot;&gt;&lt;a href=&quot;#4-用什么方式来解决？&quot; class=&quot;headerlink&quot; title=&quot;4. 用什么方式来解决？&quot;&gt;&lt;/a&gt;4. 用什么方式来解决？&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;4.1 产品结构图&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;/images/艺术狗/艺术狗结构图&quot; alt=&quot;这是一张图&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;4.2 说明&lt;/p&gt;
+&lt;p&gt;  进入到App内，首先展示的是&lt;a&gt;精选&lt;/a&gt;模块，其包括两部分，一部分是活动&lt;a&gt;Banner&lt;/a&gt;，另一部分是精选展览列表。点击活动位置进入到活动区，这里介绍了活动的主题、内容、奖项设置以及用户提交的作品，用户可以对喜爱的作品进行投票。进入到精选列表的详情，可看到关于关于该作品、该作者的介绍等详细信息，同时可以进行评论。&lt;br&gt;  发现模块包括展览、作品、艺术家和机构等四大分类，展览功能展示了当前各个地区的展览&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;废话&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;清明小长假已经结束，出去玩了两天，累的要命，腿都快走废了。节假日出去玩真心累啊，到哪都是人。出去看的不是景，看的是人。好了，不说了。下面来聊下第二个产品《艺术狗》App的简析。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;目录&lt;/st
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>UICollectionView实现瀑布流</title>
